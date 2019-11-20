@@ -1,20 +1,32 @@
 package com.capgemini.restaurant.models;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name="Dish")
 public class Dish {
-    private String id;
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private long id;
+    @Column
     private String description;
+    @Column
     private double sellingPrice;
+    @Column
     private List<Ingredient> ingredients = new ArrayList<Ingredient>();
+    @Column
     private double margin;
+    @Column
     private boolean available;
 
-    public Dish(String id) {this.id = id;}
+    public Dish(long id) {
+        id = id;
+    }
 
-    public Dish(String id, String description, double sellingPrice, ArrayList<Ingredient> ingredients, double margin, boolean available) {
-        this.id = id;
+    public Dish(long id, String description, double sellingPrice, List<Ingredient> ingredients, double margin, boolean available) {
+        id = id;
         this.description = description;
         this.sellingPrice = sellingPrice;
         this.ingredients = ingredients;
@@ -25,11 +37,11 @@ public class Dish {
     public Dish() {
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
