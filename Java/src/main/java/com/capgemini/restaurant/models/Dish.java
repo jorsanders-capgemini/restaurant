@@ -15,6 +15,8 @@ public class Dish {
     @Column
     private double sellingPrice;
     @Column
+    // TODO: remove Transient
+    @Transient
     private List<Ingredient> ingredients = new ArrayList<Ingredient>();
     @Column
     private double margin;
