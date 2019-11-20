@@ -4,10 +4,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DishesComponent } from './dishes/dishes.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
-  {path: 'ingredients', component: IngredientsComponent}
+  {path: 'ingredients', component: IngredientsComponent},
+  {path: 'dishes', component: DishesComponent},
 ];
 
 @NgModule({
