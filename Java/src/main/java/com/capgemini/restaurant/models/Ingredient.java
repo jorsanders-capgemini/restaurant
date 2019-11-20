@@ -18,6 +18,21 @@ public class Ingredient {
         this.id = id;
     }
 
+    public Ingredient(String description, String branch, String supplier, String id, String unit, String amount, String price, String VAT, String pricePerUnit, String category, String stock, String stockValue) {
+        this.description = description;
+        this.branch = branch;
+        this.supplier = supplier;
+        this.id = id;
+        this.unit = unit;
+        this.amount = amount;
+        this.price = price;
+        this.VAT = VAT;
+        this.pricePerUnit = pricePerUnit;
+        this.category = category;
+        this.stock = stock;
+        this.stockValue = stockValue;
+    }
+
     public Ingredient() {
     }
 
