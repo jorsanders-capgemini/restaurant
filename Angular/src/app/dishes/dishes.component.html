@@ -1,45 +1,44 @@
 <p>Dishes</p>
 
 <table class="table">
-    <tr>
-      <th>
-        Id
-      </th>
-      <th>
-        Description
-      </th>
-      <th>
-        Price
-      </th>
-      <th>
-        Ingredients
-      </th>
-      <th>
-        Margin
-      </th>
-      <th>
-        Available
-      </th>
-    </tr>
-    <tr *ngFor="let dish of dishes">
-      <td>
-        {{dish.id}}
-      </td>
-      <td>
-        {{dish.description}}
-      </td>
-      <td>
-        {{dish.sellingPrice}}
-      </td>
-      <td>
-        {{dish.ingredients}}
-      </td>
-      <td>
-        {{dish.margin}}
-      </td>
-      <td>
-        {{dish.available}}
-      </td>
-    </tr>
-  </table>
-  
+  <tr>
+    <th>
+      Id
+    </th>
+    <th>
+      Description
+    </th>
+    <th>
+      Price
+    </th>
+    <th>
+      Ingredients
+    </th>
+    <th>
+      Margin
+    </th>
+    <th>
+      Available
+    </th>
+  </tr>
+  <tr *ngFor="let dish of dishes">
+    <td>
+      {{dish.id}}
+    </td>
+    <td>
+      {{dish.description}}
+    </td>
+    <td>
+      {{dish.sellingPrice}}
+    </td>
+    <td>
+      <li *ngFor="let ingredient of dish.ingredients">{{ingredient.description}}</li> 
+    </td>
+    <td>
+      {{dish.margin}}
+    </td>
+    <td>
+      {{dish.available}}
+    </td>
+  </tr>
+</table>
