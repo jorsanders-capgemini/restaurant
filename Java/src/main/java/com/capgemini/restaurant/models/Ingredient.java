@@ -1,5 +1,7 @@
 package com.capgemini.restaurant.models;
 
+import javax.persistence.ManyToOne;
+
 public class Ingredient {
     private String description;
     private String branch;
@@ -13,6 +15,9 @@ public class Ingredient {
     private String category;
     private String stock;
     private String stockValue;
+    // more than 1 ingredient possible in a dish
+    @ManyToOne
+    private Dish dish;
 
     public Ingredient(String id) {
         this.id = id;

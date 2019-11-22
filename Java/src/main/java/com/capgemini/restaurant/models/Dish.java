@@ -14,24 +14,37 @@ public class Dish {
     private String description;
     @Column
     private double sellingPrice;
-    @Column
+    //@Column
     // TODO: remove Transient
+    //@Transient
+    //@Column
+    //public ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
     @Transient
-    private List<Ingredient> ingredients = new ArrayList<Ingredient>();
+    @OneToMany(targetEntity=Ingredient.class, mappedBy = "dish")
+    private List<Ingredient> ingredient;
     @Column
     private double margin;
     @Column
     private boolean available;
 
     public Dish(long id) {
-        id = id;
+        this.id = id;
     }
 
-    public Dish(long id, String description, double sellingPrice, List<Ingredient> ingredients, double margin, boolean available) {
-        id = id;
+//    public Dish(long id, String description, double sellingPrice, ArrayList<Ingredient> ingredients, double margin, boolean available) {
+//        this.id = id;
+//        this.description = description;
+//        this.sellingPrice = sellingPrice;
+//        this.ingredients = ingredients;
+//        this.margin = margin;
+//        this.available = available;
+//    }
+
+    public Dish(long id, String description, double sellingPrice, List<Ingredient> ingredient, double margin, boolean available) {
+        this.id = id;
         this.description = description;
         this.sellingPrice = sellingPrice;
-        this.ingredients = ingredients;
+        this.ingredient = ingredient;
         this.margin = margin;
         this.available = available;
     }
@@ -55,24 +68,28 @@ public class Dish {
         this.description = description;
     }
 
-    public Double getSellingPrice() {
+    public double getSellingPrice() {
         return sellingPrice;
     }
 
-    public List<Ingredient> getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(ArrayList<Ingredient> ingredients) {
-        this.ingredients = ingredients;
-    }
-
-    public void setSellingPrice(Double sellingPrice) {
-        this.sellingPrice = sellingPrice;
-    }
+//    public ArrayList<Ingredient> getIngredients() {
+//        return ingredients;
+//    }
+//
+//    public void setIngredients(ArrayList<Ingredient> ingredients) {
+//        this.ingredients = ingredients;
+//    }
 
     public void setSellingPrice(double sellingPrice) {
         this.sellingPrice = sellingPrice;
+    }
+
+    public List<Ingredient> getIngredient() {
+        return ingredient;
+    }
+
+    public void setIngredient(List<Ingredient> ingredient) {
+        this.ingredient = ingredient;
     }
 
     public double getMargin() {
