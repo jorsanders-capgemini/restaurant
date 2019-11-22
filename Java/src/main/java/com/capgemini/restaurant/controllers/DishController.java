@@ -116,6 +116,19 @@ public class DishController {
         return responseEntity;
     }
 
+    // Deletes a database item when clicked
+    @CrossOrigin
+    @DeleteMapping(value="api/deletedish/{id}",produces="application/json")
+    public void deleteDish(@PathVariable long id) {
+        dishRepository.deleteById(id);
+    }
+
+    // Deletes a database item when clicked
+    @CrossOrigin
+    @DeleteMapping(value="api/deletedishdescription/{searchTerm}",produces="application/json")
+    public void deleteDishByDescrContaining(@PathVariable String searchTerm) {
+        dishRepository.deleteByDescriptionContainingIgnoreCase(searchTerm);
+    }
 
 
 

@@ -11,4 +11,10 @@ public interface DishRepository extends CrudRepository<Dish, Long> {
 
     Iterable<Dish> findByDescriptionContainingIgnoreCase(String description);
 
+    void deleteById(long id);
+
+    default void deleteByDescriptionContainingIgnoreCase(String description) {
+
+    }
+
 }
