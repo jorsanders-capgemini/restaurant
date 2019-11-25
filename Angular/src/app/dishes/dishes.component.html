@@ -1,0 +1,42 @@
+<p>Gerechten</p>
+
+<table class="table">
+  <tr>
+    <th>
+      Nr.
+    </th>
+    <th>
+      Naam
+    </th>
+    <th>
+      Prijs
+    </th>
+    <th>
+      Ingrediënten
+    </th>
+    <th>
+      Marge
+    </th>
+    <th>
+      Beschikbaar
+    </th>
+  </tr>
+  <tr *ngFor="let dish of dishes">
+    <td>
+      {{ dish.id }}
+    </td>
+    <td>
+      {{ dish.description }}
+    </td>
+    <td>Euro {{ dish.sellingPrice }}</td>
+    <td>
+      <li *ngFor="let ingredient of dish.ingredient">
+        {{ ingredient.description }}
+      </li>
+    </td>
+    <td>{{ dish.margin }}%</td>
+    <td>
+      {{ dish.available ? 'ja' : 'nee' }}
+    </td>
+  </tr>
+</table>
