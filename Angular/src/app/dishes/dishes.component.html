@@ -3,42 +3,40 @@
 <table class="table">
   <tr>
     <th>
-      Id
+      Nr.
     </th>
     <th>
-      Description
+      Naam
     </th>
     <th>
-      Price
+      Prijs
     </th>
     <th>
-      Ingredients
+      Ingrediënten
     </th>
     <th>
-      Margin
+      Marge
     </th>
     <th>
-      Available
+      Beschikbaar
     </th>
   </tr>
   <tr *ngFor="let dish of dishes">
     <td>
-      {{dish.id}}
+      {{ dish.id }}
     </td>
     <td>
-      {{dish.description}}
+      {{ dish.description }}
     </td>
+    <td>Euro {{ dish.sellingPrice }}</td>
     <td>
-      {{dish.sellingPrice}}
+      <li *ngFor="let ingredient of dish.ingredient">
+        {{ ingredient.description }}
+      </li>
     </td>
+    <td>{{ dish.margin }}%</td>
     <td>
-      <li *ngFor="let ingredient of dish.ingredient">{{ingredient.description}}</li> 
-    </td>
-    <td>
-      {{dish.margin}}
-    </td>
-    <td>
-      {{dish.available}}
+      {{ dish.available ? 'beschikbaar' : 'niet beschikbaar' }}
     </td>
   </tr>
 </table>

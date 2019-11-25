@@ -7,15 +7,13 @@ import { DataService } from '../data.service';
   styleUrls: ['./dishes.component.css']
 })
 export class DishesComponent implements OnInit {
+  dishes = [];
 
-  dishes = []
-
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService) {}
 
   ngOnInit() {
-    this.dataService.sendGetRequest('dishes').subscribe((data: any[])=>{
+    this.dataService.sendGetRequest('dishes').subscribe((data: any[]) => {
       this.dishes = data;
-    })
+    });
   }
-
 }
