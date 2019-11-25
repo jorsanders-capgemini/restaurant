@@ -15,6 +15,7 @@ public class IngredientController {
     @CrossOrigin
     @GetMapping("api/ingredientes/{id}")
     public ResponseEntity<Ingredient> getIngredient(@PathVariable(required = true) long id) {
+        // TODO get from db
         return ResponseEntity.ok().body(new Ingredient(id));
     }
 
