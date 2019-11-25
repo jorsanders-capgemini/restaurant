@@ -7,6 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { DishesComponent } from './dishes/dishes.component';
+import { IngrDishListComponent } from './ingr-dish-list/ingr-dish-list.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { DishesComponent } from './dishes/dishes.component';
     NavbarComponent,
     HomeComponent,
     IngredientsComponent,
-    DishesComponent
+    DishesComponent,
+    IngrDishListComponent
   ],
   imports: [
     BrowserModule,
