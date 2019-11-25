@@ -1,7 +1,6 @@
 package com.capgemini.restaurant.models;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,8 +13,8 @@ public class Dish {
     private String description;
     @Column
     private double sellingPrice;
-    // TODO: remove Transient
     @Column
+    // TODO: remove Transient
     @Transient
     @OneToMany(targetEntity = Ingredient.class, mappedBy = "dish")
     private List<Ingredient> ingredient;

@@ -1,13 +1,13 @@
 package com.capgemini.restaurant.repositories;
 
-import com.capgemini.restaurant.models.Dish;
+import com.capgemini.restaurant.models.Ingredient;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DishRepository extends CrudRepository<Dish, Long> {
+public interface IngredientRepository extends CrudRepository<Ingredient, Long> {
 
-    Iterable<Dish> findByDescriptionContainingIgnoreCase(String description);
+    Iterable<Ingredient> findByNameContainingIgnoreCase(String name);
 
     void deleteById(long id);
 }
