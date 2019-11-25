@@ -5,40 +5,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="Dish")
+@Table(name = "Dish")
 public class Dish {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Column
     private String description;
     @Column
     private double sellingPrice;
-    //@Column
     // TODO: remove Transient
-    //@Transient
-    //@Column
-    //public ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
+    @Column
     @Transient
-    @OneToMany(targetEntity=Ingredient.class, mappedBy = "dish")
+    @OneToMany(targetEntity = Ingredient.class, mappedBy = "dish")
     private List<Ingredient> ingredient;
     @Column
     private double margin;
     @Column
     private boolean available;
 
+    public Dish() {
+    }
+
     public Dish(long id) {
         this.id = id;
     }
-
-//    public Dish(long id, String description, double sellingPrice, ArrayList<Ingredient> ingredients, double margin, boolean available) {
-//        this.id = id;
-//        this.description = description;
-//        this.sellingPrice = sellingPrice;
-//        this.ingredients = ingredients;
-//        this.margin = margin;
-//        this.available = available;
-//    }
 
     public Dish(long id, String description, double sellingPrice, List<Ingredient> ingredient, double margin, boolean available) {
         this.id = id;
@@ -47,9 +38,6 @@ public class Dish {
         this.ingredient = ingredient;
         this.margin = margin;
         this.available = available;
-    }
-
-    public Dish() {
     }
 
     public long getId() {
@@ -71,14 +59,6 @@ public class Dish {
     public double getSellingPrice() {
         return sellingPrice;
     }
-
-//    public ArrayList<Ingredient> getIngredients() {
-//        return ingredients;
-//    }
-//
-//    public void setIngredients(ArrayList<Ingredient> ingredients) {
-//        this.ingredients = ingredients;
-//    }
 
     public void setSellingPrice(double sellingPrice) {
         this.sellingPrice = sellingPrice;

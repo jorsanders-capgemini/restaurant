@@ -15,12 +15,15 @@ public class Ingredient {
     private String category;
     private String stock;
     private String stockValue;
-    // more than 1 ingredient possible in a dish
+
     @ManyToOne
     private Dish dish;
 
     public Ingredient(String id) {
         this.id = id;
+    }
+
+    public Ingredient() {
     }
 
     public Ingredient(String description, String branch, String supplier, String id, String unit, String amount, String price, String VAT, String pricePerUnit, String category, String stock, String stockValue) {
@@ -36,9 +39,6 @@ public class Ingredient {
         this.category = category;
         this.stock = stock;
         this.stockValue = stockValue;
-    }
-
-    public Ingredient() {
     }
 
     public String getDescription() {

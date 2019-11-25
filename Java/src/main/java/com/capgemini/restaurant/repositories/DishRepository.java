@@ -1,5 +1,6 @@
-package com.capgemini.restaurant.models;
+package com.capgemini.restaurant.repositories;
 
+import com.capgemini.restaurant.models.Dish;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -7,14 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DishRepository extends CrudRepository<Dish, Long> {
 
-    Iterable<Dish> findByDescription(String description);
-
     Iterable<Dish> findByDescriptionContainingIgnoreCase(String description);
 
     void deleteById(long id);
-
-    default void deleteByDescriptionContainingIgnoreCase(String description) {
-
-    }
-
 }
