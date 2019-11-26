@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.Optional;
 
 @RestController
 public class DishController {
@@ -24,16 +28,22 @@ public class DishController {
     }
 
     @CrossOrigin
-    @PostMapping
-    public void create(){
-       //todo
+    @PostMapping(value = "api/dish", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<Dish> create(@RequestBody final Dish dish){
+        dishService.create(dish);
+        return new ResponseEntity<Dish>(dish, HttpStatus.OK);
     }
 
     @CrossOrigin
     @GetMapping("api/dishes/{id}")
-    public ResponseEntity<Dish> getDish(@PathVariable(required = true) long id) {
-        // TODO get from service
-        return ResponseEntity.ok().body(new Dish(id));
+    public ResponseEntity<Dish> getById(@PathVariable(required = true) long id) {
+        Optional<Dish> dish = dishService.getById(id);
+        if(dish.isPresent()) {
+            return new ResponseEntity<Dish>(dish.get(), HttpStatus.OK);
+        }
+         else {
+             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Dish with id " + id + " not found");
+        }
     }
 
     @CrossOrigin

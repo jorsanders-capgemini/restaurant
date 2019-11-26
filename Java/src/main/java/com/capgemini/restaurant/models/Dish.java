@@ -16,7 +16,7 @@ public class Dish {
     @Column
     // TODO: remove Transient
     @Transient
-    @OneToMany(targetEntity = Ingredient.class, mappedBy = "dish")
+    @OneToMany(mappedBy = "dish")
     private List<Ingredient> ingredient;
     @Column
     private double margin;
