@@ -9,18 +9,35 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class DishController {
-    @Autowired
     private DishService dishService;
+
+    @Autowired
+    DishController(DishService dishService) {
+        this.dishService = dishService;
+    }
+
+    @CrossOrigin
+    @GetMapping(value = "api/dishes", produces = "application/json")
+    public ResponseEntity<Iterable<Dish>> listAll() {
+        Iterable<Dish> dishes = dishService.listAll();
+        return new ResponseEntity<Iterable<Dish>>(dishes, HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @PostMapping
+    public void create(){
+       //todo
+    }
 
     @CrossOrigin
     @GetMapping("api/dishes/{id}")
     public ResponseEntity<Dish> getDish(@PathVariable(required = true) long id) {
+        // TODO get from service
         return ResponseEntity.ok().body(new Dish(id));
     }
 
     @CrossOrigin
-    // TODO: Putmapping
-    @PostMapping(value = "api/dish/save", consumes = "application/json", produces = "application/json")
+    @PutMapping(value = "api/dish/save", consumes = "application/json", produces = "application/json")
     public ResponseEntity saveDish(@RequestBody final Dish dish) {
         dishService.save(dish);
 
@@ -28,22 +45,19 @@ public class DishController {
     }
 
     @CrossOrigin
-    @GetMapping(value = "api/dishes", produces = "application/json")
-    public ResponseEntity<Iterable<Dish>> listDishes() {
-        Iterable<Dish> dishes = dishService.listAll();
-        return new ResponseEntity<Iterable<Dish>>(dishes, HttpStatus.OK);
-    }
-
-    @CrossOrigin
-    @GetMapping(value = "api/dishes/findByDescription/{description}", produces = "application/json")
-    public ResponseEntity<Iterable<Dish>> findDishesByDescription(@PathVariable(required = true) String description) {
-        Iterable<Dish> dishes = dishService.findByDescription(description);
-        return new ResponseEntity<Iterable<Dish>>(dishes, HttpStatus.OK);
-    }
-
-    @CrossOrigin
     @DeleteMapping(value = "api/dishes/delete/{id}", produces = "application/json")
     public void deleteDish(@PathVariable long id) {
         dishService.deleteId(id);
     }
+
+
+    @CrossOrigin
+    @GetMapping(value = "api/dishes/findByDescription/{description}", produces = "application/json")
+    public ResponseEntity<Iterable<Dish>> findDishesByDescription(@PathVariable(required = true) String description) {
+        // TODO use query variable not path variable
+        Iterable<Dish> dishes = dishService.findByDescription(description);
+        return new ResponseEntity<Iterable<Dish>>(dishes, HttpStatus.OK);
+    }
+
+
 }
