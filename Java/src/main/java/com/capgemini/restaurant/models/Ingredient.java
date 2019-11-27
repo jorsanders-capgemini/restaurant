@@ -36,6 +36,7 @@ public class Ingredient {
     }
 
     public Ingredient(long id) {
+
     }
 
     public long getId() {
