@@ -14,8 +14,8 @@ public class Dish {
     @Column
     private double sellingPrice;
     @Column
-    @OneToMany
-    private List<Ingredient> ingredient;
+    @ManyToMany
+    private List<Ingredient> ingredients;
     @Column
     private double margin;
     @Column
@@ -32,7 +32,7 @@ public class Dish {
         this.id = id;
         this.description = description;
         this.sellingPrice = sellingPrice;
-        this.ingredient = ingredient;
+        this.ingredients = ingredient;
         this.margin = margin;
         this.available = available;
     }
@@ -61,12 +61,12 @@ public class Dish {
         this.sellingPrice = sellingPrice;
     }
 
-    public List<Ingredient> getIngredient() {
-        return ingredient;
+    public List<Ingredient> getIngredients() {
+        return ingredients;
     }
 
-    public void setIngredient(List<Ingredient> ingredient) {
-        this.ingredient = ingredient;
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 
     public double getMargin() {

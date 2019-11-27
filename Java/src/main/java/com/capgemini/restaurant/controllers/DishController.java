@@ -1,6 +1,7 @@
 package com.capgemini.restaurant.controllers;
 
 import com.capgemini.restaurant.models.Dish;
+import com.capgemini.restaurant.models.Ingredient;
 import com.capgemini.restaurant.services.DishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,7 +30,7 @@ public class DishController {
 
     @CrossOrigin
     @PostMapping(value = "api/dish", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Dish> create(@RequestBody final Dish dish){
+    public ResponseEntity<Dish> create(@RequestBody final Dish dish) {
         dishService.create(dish);
         return new ResponseEntity<Dish>(dish, HttpStatus.OK);
     }
@@ -38,17 +39,19 @@ public class DishController {
     @GetMapping("api/dishes/{id}")
     public ResponseEntity<Dish> getById(@PathVariable(required = true) long id) {
         Optional<Dish> dish = dishService.getById(id);
-        if(dish.isPresent()) {
+        if (dish.isPresent()) {
             return new ResponseEntity<Dish>(dish.get(), HttpStatus.OK);
-        }
-         else {
-             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Dish with id " + id + " not found");
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Dish with id " + id + " not found");
         }
     }
 
     @CrossOrigin
     @PutMapping(value = "api/dish/save", consumes = "application/json", produces = "application/json")
     public ResponseEntity saveDish(@RequestBody final Dish dish) {
+        for (Ingredient ingredient : dish.getIngredients()) {
+            //TODO
+        }
         dishService.save(dish);
 
         return ResponseEntity.ok().body(dish);
