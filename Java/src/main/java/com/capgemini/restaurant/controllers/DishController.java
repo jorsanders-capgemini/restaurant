@@ -3,6 +3,7 @@ package com.capgemini.restaurant.controllers;
 import com.capgemini.restaurant.models.Dish;
 import com.capgemini.restaurant.models.Ingredient;
 import com.capgemini.restaurant.services.DishService;
+import com.capgemini.restaurant.services.IngredientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,12 +15,11 @@ import java.util.Optional;
 
 @RestController
 public class DishController {
+    @Autowired
     private DishService dishService;
 
     @Autowired
-    DishController(DishService dishService) {
-        this.dishService = dishService;
-    }
+    private IngredientService ingredientService;
 
     @CrossOrigin
     @GetMapping(value = "api/dishes", produces = "application/json")
@@ -50,7 +50,7 @@ public class DishController {
     @PutMapping(value = "api/dish/save", consumes = "application/json", produces = "application/json")
     public ResponseEntity saveDish(@RequestBody final Dish dish) {
         for (Ingredient ingredient : dish.getIngredients()) {
-            //TODO
+            ingredientService.save(ingredient);
         }
         dishService.save(dish);
 
