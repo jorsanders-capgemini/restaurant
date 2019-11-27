@@ -14,7 +14,6 @@ public class Ingredient {
     private String category;
     @Column
     private String stock;
-    @ManyToOne
     // TODO: remove Transient
     @Transient
     private Dish dish;

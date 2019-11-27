@@ -14,9 +14,7 @@ public class Dish {
     @Column
     private double sellingPrice;
     @Column
-    // TODO: remove Transient
-    @Transient
-    @OneToMany(mappedBy = "dish")
+    @OneToMany
     private List<Ingredient> ingredient;
     @Column
     private double margin;
