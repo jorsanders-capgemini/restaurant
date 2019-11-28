@@ -50,7 +50,7 @@ public class DishController {
     @PutMapping(value = "api/dish/save", consumes = "application/json", produces = "application/json")
     public ResponseEntity saveDish(@RequestBody final Dish dish) {
         for (Ingredient ingredient : dish.getIngredients()) {
-            ingredientService.save(ingredient);
+            ingredient = ingredientService.save(ingredient);
         }
         dishService.save(dish);
 

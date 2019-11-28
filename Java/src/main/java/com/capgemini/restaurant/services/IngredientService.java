@@ -19,8 +19,8 @@ public class IngredientService {
         ingredientRepository.save(ingredient);
     }
 
-    public void save(Ingredient ingredient) {
-        ingredientRepository.save(ingredient);
+    public Ingredient save(Ingredient ingredient) {
+        return ingredientRepository.save(ingredient);
     }
 
     public Iterable<Ingredient> listAll() {
