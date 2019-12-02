@@ -1,1 +1,25 @@
-<p>dishes-add works!</p>
+<p>Gerecht toevoegen</p>
+<label>
+  Name:
+  <input type="text" [formControl]="name" />
+</label>
+<p>Value: {{ name.value }}</p>
+<p>
+  <button (click)="updateName()">Update Name</button>
+</p>
+<form [formGroup]="dishForm">
+  <label>
+    First Name:
+    <input type="text" formControlName="firstName" />
+  </label>
+
+  <label>
+    Last Name:
+    <input type="text" formControlName="lastName" />
+  </label>
+</form>
+<form [formGroup]="dishForm" (ngSubmit)="onSubmit()"></form>
+<button type="submit" [disabled]="!dishForm.valid">Submit</button>
+<p>
+  <button (click)="updateProfile()">Update Profile</button>
+</p>
