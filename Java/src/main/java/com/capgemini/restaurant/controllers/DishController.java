@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -49,9 +50,14 @@ public class DishController {
     @CrossOrigin
     @PutMapping(value = "api/dish/save", consumes = "application/json", produces = "application/json")
     public ResponseEntity saveDish(@RequestBody final Dish dish) {
-        for (Ingredient ingredient : dish.getIngredients()) {
-            ingredient = ingredientService.save(ingredient);
+        List<Ingredient> ingredients = dish.getIngredients();
+
+        for (int i = 0; i < ingredients.size(); i++) {
+            Ingredient ingredient = ingredientService.save(ingredients.get(i));
+            ingredients.set(i, ingredient);
         }
+        
+        dish.setIngredients(ingredients);
         dishService.save(dish);
 
         return ResponseEntity.ok().body(dish);
