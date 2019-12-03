@@ -3,9 +3,6 @@
 <table class="table">
   <tr>
     <th>
-      Nr.
-    </th>
-    <th>
       Naam
     </th>
     <th>
@@ -23,12 +20,9 @@
   </tr>
   <tr *ngFor="let dish of dishes">
     <td>
-      {{ dish.id }}
-    </td>
-    <td>
       {{ dish.description }}
     </td>
-    <td>Euro {{ dish.sellingPrice }}</td>
+    <td>{{ dish.sellingPrice | currency: 'EUR':true }}</td>
     <td>
       <li *ngFor="let ingredient of dish.ingredient">
         {{ ingredient.description }}
