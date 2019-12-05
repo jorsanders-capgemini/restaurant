@@ -56,7 +56,7 @@ public class DishController {
             Ingredient ingredient = ingredientService.save(ingredients.get(i));
             ingredients.set(i, ingredient);
         }
-        
+
         dish.setIngredients(ingredients);
         dishService.save(dish);
 

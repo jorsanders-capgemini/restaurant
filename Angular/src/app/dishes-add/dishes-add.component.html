@@ -1,25 +1,45 @@
-<p>Gerecht toevoegen</p>
-<label>
-  Name:
-  <input type="text" [formControl]="name" />
-</label>
-<p>Value: {{ name.value }}</p>
-<p>
-  <button (click)="updateName()">Update Name</button>
-</p>
+<p>Gerecht toevoegen:</p>
 <form [formGroup]="dishForm">
   <label>
-    First Name:
-    <input type="text" formControlName="firstName" />
+    Omschrijving
+    <input type="text" formControlName="decription" required />
   </label>
-
+  <br />
   <label>
-    Last Name:
-    <input type="text" formControlName="lastName" />
+    Verkoopprijs
+    <input type="text" formControlName="sellingPrice" />
+  </label>
+  <br />
+  <label>
+    ingredienten:
+    <br />
+    Ingredient1
+    <input type="text" formControlName="ingredient1" />
+    <br />
+    Ingredient2
+    <input type="text" formControlName="ingredient2" />
+    <br />
+    Ingredient3
+    <input type="text" formControlName="ingredient3" />
+    <br />
+    Ingredient4
+    <input type="text" formControlName="ingredient4" />
+    <br />
+    Ingredient5
+    <input type="text" formControlName="ingredient5" />
+    <br />
+  </label>
+  <br />
+  <label>
+    Marge
+    <input type="text" formControlName="margin" />
+  </label>
+  <br />
+  <label>
+    Beschikbaar
+    <input type="text" formControlName="available" />
   </label>
 </form>
 <form [formGroup]="dishForm" (ngSubmit)="onSubmit()"></form>
 <button type="submit" [disabled]="!dishForm.valid">Submit</button>
-<p>
-  <button (click)="updateProfile()">Update Profile</button>
-</p>
+<p>Form Status: {{ dishForm.status }}</p>
