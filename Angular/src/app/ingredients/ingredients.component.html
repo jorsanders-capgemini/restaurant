@@ -6,15 +6,15 @@
       Naam
     </th>
     <th>
-      Prijs
+      Voorraad
     </th>
   </tr>
   <tr *ngFor="let ingredient of ingredients">
     <td>
-      {{ingredient.description}}
+      {{ ingredient.name }}
     </td>
     <td>
-      {{ingredient.price}}
+      {{ ingredient.stock }}
     </td>
   </tr>
 </table>

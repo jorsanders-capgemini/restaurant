@@ -24,9 +24,11 @@
     </td>
     <td>{{ dish.sellingPrice | currency: 'EUR':true }}</td>
     <td>
-      <li *ngFor="let ingredient of dish.ingredient">
-        {{ ingredient.description }}
-      </li>
+      <ul>
+        <li *ngFor="let ingredient of dish.ingredients">
+          {{ ingredient.name }}
+        </li>
+      </ul>
     </td>
     <td>{{ dish.margin }}%</td>
     <td>

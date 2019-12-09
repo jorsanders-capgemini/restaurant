@@ -1,8 +1,8 @@
 <p>Gerecht toevoegen:</p>
-<form [formGroup]="dishForm">
+<form [formGroup]="dishForm" (ngSubmit)="onSubmit()">
   <label>
     Omschrijving
-    <input type="text" formControlName="decription" required />
+    <input type="text" formControlName="description" required />
   </label>
   <br />
   <label>
@@ -10,7 +10,7 @@
     <input type="text" formControlName="sellingPrice" />
   </label>
   <br />
-  <label>
+  <!-- <label>
     ingredienten:
     <br />
     Ingredient1
@@ -28,7 +28,7 @@
     Ingredient5
     <input type="text" formControlName="ingredient5" />
     <br />
-  </label>
+  </label> -->
   <br />
   <label>
     Marge
@@ -39,8 +39,9 @@
     Beschikbaar
     <input type="text" formControlName="available" />
   </label>
+  <br />
+  <button type="submit" [disabled]="!dishForm.valid">Submit</button>
 </form>
-<form [formGroup]="dishForm" (ngSubmit)="onSubmit()"></form>
-<button type="submit" [disabled]="!dishForm.valid">Submit</button>
+
 <!-- <app-dishes-add></app-dishes-add> -->
 <!-- <p>Form Status: {{ dishForm.status }}</p> -->

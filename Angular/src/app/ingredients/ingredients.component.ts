@@ -7,15 +7,13 @@ import { DataService } from '../data.service';
   styleUrls: ['./ingredients.component.css']
 })
 export class IngredientsComponent implements OnInit {
+  ingredients = [];
 
-  ingredients = []
-
-  constructor(private dataService: DataService){}
+  constructor(private dataService: DataService) {}
 
   ngOnInit() {
-    this.dataService.sendGetRequest('ingredients').subscribe((data: any[])=>{
+    this.dataService.sendGetRequest('ingredients').subscribe((data: any[]) => {
       this.ingredients = data;
-    })
+    });
   }
-
 }
