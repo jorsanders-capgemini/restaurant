@@ -18,10 +18,10 @@ public class IngredientController {
     private IngredientService ingredientService;
 
     @CrossOrigin
-    @GetMapping(value = "api/ingredientes", produces = "application/json")
+    @GetMapping(value = "api/ingredients", produces = "application/json")
     public ResponseEntity<Iterable<Ingredient>> listAll() {
-        Iterable<Ingredient> ingredientes = ingredientService.listAll();
-        return new ResponseEntity<Iterable<Ingredient>>(ingredientes, HttpStatus.OK);
+        Iterable<Ingredient> ingredients = ingredientService.listAll();
+        return new ResponseEntity<Iterable<Ingredient>>(ingredients, HttpStatus.OK);
     }
 
     @PostMapping(value = "api/ingredients", consumes = "application/json", produces = "application/json")
@@ -31,7 +31,7 @@ public class IngredientController {
     }
 
     @CrossOrigin
-    @GetMapping("api/ingredientes/{id}")
+    @GetMapping("api/ingredients/{id}")
     public ResponseEntity<Ingredient> getById(@PathVariable(required = true) long id) {
         Optional<Ingredient> ingredient = ingredientService.getById(id);
 
@@ -52,15 +52,15 @@ public class IngredientController {
     }
 
     @CrossOrigin
-    @DeleteMapping(value = "api/ingredientes/delete/{id}", produces = "application/json")
+    @DeleteMapping(value = "api/ingredients/delete/{id}", produces = "application/json")
     public void deleteIngredient(@PathVariable long id) {
         ingredientService.deleteId(id);
     }
 
     @CrossOrigin
-    @GetMapping(value = "api/ingredientes/findByName/{name}", produces = "application/json")
-    public ResponseEntity<Iterable<Ingredient>> findIngredientesByName(@PathVariable(required = true) String name) {
-        Iterable<Ingredient> ingredientes = ingredientService.findByDescription(name);
-        return new ResponseEntity<Iterable<Ingredient>>(ingredientes, HttpStatus.OK);
+    @GetMapping(value = "api/ingredients/findByName/{name}", produces = "application/json")
+    public ResponseEntity<Iterable<Ingredient>> findIngredientsByName(@PathVariable(required = true) String name) {
+        Iterable<Ingredient> ingredients = ingredientService.findByDescription(name);
+        return new ResponseEntity<Iterable<Ingredient>>(ingredients, HttpStatus.OK);
     }
 }
