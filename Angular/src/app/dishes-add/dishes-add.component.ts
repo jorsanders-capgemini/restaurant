@@ -4,6 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { FormArray } from '@angular/forms';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-dishes-add',
@@ -12,7 +13,9 @@ import { FormArray } from '@angular/forms';
 })
 export class DishesAddComponent implements OnInit {
   dishForm: FormGroup;
-  constructor() {}
+
+  constructor(private dataService: DataService) {}
+
   ngOnInit() {
     this.dishForm = new FormGroup({
       description: new FormControl(''),
@@ -28,9 +31,14 @@ export class DishesAddComponent implements OnInit {
       available: new FormControl('')
     });
   }
+
   onSubmit() {
     // TODO: Use EventEmitter with form value
     console.warn(this.dishForm.value);
-    this.dishForm.reset();
+
+    this.dataService.saveNewDish('dish/save', 'testvaluevanform').subscribe((data: any) => {
+      console.log('jeej');
+      this.dishForm.reset();
+    });
   }
 }
